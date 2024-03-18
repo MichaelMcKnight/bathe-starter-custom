@@ -1,0 +1,72 @@
+@use '../../global/breakpoints';
+
+.modal {
+	height: 100%;
+	left: 0;
+	overflow: scroll;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+
+	header {
+		button {
+			background-color: transparent;
+			border-width: 0;
+			color: var(--clr-white);
+			cursor: pointer;
+			font-size: 3rem;
+
+			&:hover {
+				color: var(--clr-primary);
+			}
+		}
+	}
+
+	&__main {
+		left: 0;
+		max-width: 1200px;
+		opacity: 0;
+		position: absolute;
+		top: 10%;
+		transition: all 350ms ease-in-out;
+		width: 100%;
+		z-index: 2;
+
+		@include breakpoints.media-breakpoint-up(md) {
+			left: 50%;
+			top: 60%;
+			transform: translate(-50%, -50%);
+		}
+
+		&.active {
+			opacity: 1;
+			top: 0;
+
+			@include breakpoints.media-breakpoint-up(md) {
+				top: calc(50% - 5rem);
+			}
+		}
+
+		&__body {
+			background-color: var(--clr-white);
+			box-shadow: var(--drop-shadow);
+
+			&__image-only {
+				&::after {
+					padding-bottom: 56.25%;
+				}
+			}
+		}
+	}
+
+	&__bg {
+		background-color: rgba(0 0 0 / 80%);
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+	}
+}

@@ -1,0 +1,26 @@
+@use 'sass:map';
+@use '../global/breakpoints';
+
+/* change these as needed for mockups */
+$container-sizes: (
+	sm: 65rem,
+	md: 70rem,
+	lg: 80rem,
+	xl: 90rem,
+	xxl: 100rem,
+);
+
+.container,
+.alignwide {
+	margin-inline: auto;
+	width: min(100% - 2rem, 90rem);
+}
+
+@each $size, $value in $container-sizes {
+	.container-#{$size},
+	body .is-layout-constrained .container-#{$size} {
+		margin-inline: auto;
+		max-width: $value;
+		width: calc(100% - 2rem);
+	}
+}

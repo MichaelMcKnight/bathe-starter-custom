@@ -1,0 +1,6 @@
+@use '../global' as *;
+
+.footer {
+	border-top: 1px solid var(--clr-neutral-light);
+	padding: 2rem 0;
+}

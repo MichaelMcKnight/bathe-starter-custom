@@ -1,0 +1,15 @@
+{
+  "extends": ["stylelint-config-sass-guidelines", "stylelint-config-prettier"],
+  "rules": {
+    "indentation": "tab",
+    "import-notation": null,
+    "color-named": null,
+    "no-empty-source": null,
+    "property-no-vendor-prefix": null,
+    "selector-class-pattern": null,
+    "no-descending-specificity": null,
+    "max-nesting-depth": null,
+    "selector-no-qualifying-type": null,
+    "selector-max-compound-selectors": null
+  }
+}

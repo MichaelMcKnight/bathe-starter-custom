@@ -1,0 +1,98 @@
+.btn {
+	background-color: var(--clr-primary);
+	border: 2px solid var(--clr-primary);
+	color: var(--clr-white);
+	cursor: pointer;
+	display: inline-block;
+	font-size: var(--fs-18);
+	font-weight: 700;
+	margin: 1.5rem 0;
+	padding: 0.5rem 2.5rem;
+	text-decoration: none;
+	transition: 0.1s ease-in-out;
+
+	a {
+		color: var(--clr-white);
+	}
+
+	&:hover {
+		background-color: var(--clr-white);
+		color: var(--clr-primary);
+
+		a {
+			color: var(--clr-primary);
+		}
+	}
+
+	&--secondary {
+		background-color: var(--clr-secondary);
+
+		&:hover {
+			background-color: var(--clr-white);
+			color: var(--clr-secondary);
+
+			a {
+				color: var(--clr-secondary);
+			}
+		}
+	}
+
+	&--white {
+		background-color: var(--clr-white);
+		color: var(--clr-primary);
+
+		a {
+			color: var(--clr-primary);
+		}
+
+		&:hover {
+			background-color: var(--clr-primary);
+			border-color: var(--white);
+			color: var(--clr-white);
+
+			a {
+				color: var(--clr-secondary);
+			}
+		}
+	}
+
+	&--outline {
+		background-color: transparent;
+		border-color: var(--clr-primary);
+		color: var(--clr-primary);
+
+		a {
+			color: var(--clr-primary);
+		}
+
+		&:hover {
+			background-color: var(--clr-primary);
+			border-color: var(--clr-white);
+			color: var(--clr-white);
+
+			a {
+				color: var(--clr-primary);
+			}
+		}
+	}
+
+	&--outline-white {
+		background-color: transparent;
+		border-color: var(--clr-white);
+		color: var(--clr-white);
+
+		a {
+			color: var(--clr-white);
+		}
+
+		&:hover {
+			background-color: var(--clr-white);
+			border-color: var(--clr-primary);
+			color: var(--clr-primary);
+
+			a {
+				color: var(--clr-primary);
+			}
+		}
+	}
+}

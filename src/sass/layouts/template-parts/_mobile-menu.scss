@@ -1,0 +1,101 @@
+@use '../../global/breakpoints';
+
+.mobile-nav {
+	@include breakpoints.media-breakpoint-up(md) {
+		display: none;
+	}
+
+	.mobile-menu {
+		background-color: var(--clr-white);
+		display: none;
+		height: 100vh;
+		justify-content: center;
+		left: 0;
+		opacity: 0;
+		position: fixed;
+		top: 0;
+		transition: all 350ms ease-in-out;
+		width: 100%;
+		z-index: 99;
+
+		&.show-menu {
+			display: flex;
+		}
+
+		&.active {
+			opacity: 1;
+		}
+
+		.menu {
+			display: block;
+			margin-top: 150px;
+			position: relative;
+			text-align: center;
+			top: 5rem;
+			transition: all 350ms ease-in-out;
+			width: calc(100% - 2rem);
+
+			&.active {
+				top: 0;
+			}
+
+			.menu-item:not(.btn) {
+				margin: 0.5rem 0;
+				position: relative;
+
+				&.menu-item-has-children {
+					&::after {
+						content: '\f054';
+						display: block;
+						font: var(--fa-font-solid);
+						position: absolute;
+						right: 1rem;
+						top: 10px;
+						transition: all 200ms ease-in-out;
+					}
+
+					&.active {
+						&::after {
+							transform: rotate(90deg);
+						}
+					}
+				}
+
+				a {
+					color: var(--clr-primary);
+					font-size: var(--fs-30);
+					font-weight: 600;
+				}
+
+				.sub-menu {
+					height: 0;
+					list-style: none;
+					margin: 0;
+					opacity: 0;
+					padding: 0 1rem;
+					text-align: center;
+					transition: all 350ms ease-in-out;
+				}
+			}
+		}
+	}
+
+	.hamburger {
+		position: relative;
+		z-index: 100;
+
+		&.is-active {
+			.hamburger-inner,
+			.hamburger-inner::before,
+			.hamburger-inner::after {
+				background-color: var(--clr-primary);
+			}
+		}
+	}
+
+	.hamburger-inner,
+	.hamburger-inner::before,
+	.hamburger-inner::after {
+		background-color: var(--clr-primary);
+	}
+}

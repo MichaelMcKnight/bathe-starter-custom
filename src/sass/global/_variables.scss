@@ -1,0 +1,74 @@
+$theme-colors: (
+	'primary': #4839bf,
+	'secondary': rgb(104 201 181),
+	'neutral-light': #eee,
+	'black': #000,
+	'white': #fff,
+);
+
+/**
+* https://utopia.fyi/type/calculator/
+* Select min & max font sizes, type scale doesn't matter
+* Min Viewport: 375px
+* Max Viewport: 1440px
+* Check "use clamp" and copy value from --step-0
+*/
+$font-sizes: (
+	'5': 5px,
+	'6': 6px,
+	'7': 7px,
+	'8': 8px,
+	'9': 9px,
+	'10': 10px,
+	'11': 11px,
+	'12': 12px,
+	'13': 13px,
+	'14': 14px,
+	'15': 15px,
+	'16': 16px,
+	'17': 17px,
+	'18': 18px,
+	'19': 19px,
+	'20': 20px,
+	'21': 21px,
+	'22': 22px,
+	'23': 23px,
+	'24': 24px,
+	'25': 25px,
+	'26': 26px,
+	'27': 27px,
+	'28': 28px,
+	'29': 29px,
+	'30': 30px,
+	'32': 32px,
+	'34': 34px,
+	'36': 36px,
+	'38': 38px,
+	'40': clamp(1.875rem, 1.6576rem + 1.087vw, 2.5rem),
+	'42': 42px,
+	'44': 44px,
+	'46': 46px,
+	'48': 48px,
+	'50': clamp(2.5rem, 2.2826rem + 1.087vw, 3.125rem),
+	// 52-55px
+	'55': clamp(3.25rem, 3.1848rem + 0.3261vw, 3.4375rem),
+	// 60-70px
+	'70': clamp(2.5rem, 1.8478rem + 3.2609vw, 4.375rem),
+);
+
+$grid-breakpoints: (
+	xs: 0,
+	// 0px
+	sm: 36rem,
+	// 576px
+	sm-md: 42rem,
+	// 672px
+	md: 48rem,
+	// 768px
+	lg: 62rem,
+	// 992px
+	xl: 80rem,
+	// 1280px
+	xxl: 92rem,
+	// 1472px
+) !default;
