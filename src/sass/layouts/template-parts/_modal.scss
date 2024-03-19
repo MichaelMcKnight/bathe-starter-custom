@@ -16,6 +16,8 @@
 			color: var(--clr-white);
 			cursor: pointer;
 			font-size: 3rem;
+			line-height: 0;
+			padding: 0;
 
 			&:hover {
 				color: var(--clr-primary);
@@ -61,7 +63,7 @@
 	}
 
 	&__bg {
-		background-color: rgba(0 0 0 / 80%);
+		background-color: rgba(0 0 0 / 85%);
 		height: 100%;
 		left: 0;
 		position: absolute;

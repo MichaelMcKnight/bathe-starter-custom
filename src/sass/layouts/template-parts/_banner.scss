@@ -1,0 +1,14 @@
+.banner {
+	&__close {
+		background-color: 0;
+		border-width: 0;
+		color: var(--clr-white);
+		cursor: pointer;
+		font-size: 3rem;
+		line-height: 0;
+		padding: 0;
+		position: absolute;
+		right: 15px;
+		top: 15px;
+	}
+}

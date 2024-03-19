@@ -20,6 +20,9 @@
 <body <?php body_class( 'antialiased flex flex-col min-h-screen' ); ?>>
 <?php wp_body_open(); ?>
 
+<?php if (is_front_page()) :
+	get_template_part('template-parts/banner');
+endif; ?>
 <header class="site-header">
 	<div class="container flex align-items-center justify-content-space-between">
 		<?php get_template_part('template-parts/brand'); ?>
@@ -32,7 +35,7 @@
 				'container' => 'ul'
 			]); ?>
 		</nav>
-		<?php get_template_part('/template-parts/mobile-menu'); ?>
+		<?php get_template_part('template-parts/mobile-menu'); ?>
 	</div>
 </header>
 

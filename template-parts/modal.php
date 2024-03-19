@@ -6,11 +6,13 @@
 
 	$showModal = $modalSettings['modal_display']['show_modal'];
 	$imageOnly = $modalSettings['modal_display']['image_only'];
+	$videoOnly = $modalSettings['modal_display']['video_only'];
 
 	$modalHeading = $modalSettings['modal_content']['modal_heading'];
 	$modalContent = $modalSettings['modal_content']['modal_content'];
 	$modalButton = $modalSettings['modal_content']['modal_button'];
 	$modalImage = $modalSettings['modal_content']['modal_image'];
+	$modalVideo = $modalSettings['modal_content']['modal_video'];
 
 ?>
 
@@ -31,8 +33,8 @@
 					&times;
 				</button>
 			</header>
-			<div class="modal__main__body <?php echo !$imageOnly && $modalImage ? 'grid cols-md-2' : '' ?>">
-				<?php if (!$imageOnly) : ?>
+			<div class="modal__main__body <?php echo ((!$imageOnly && !$videoOnly) && $modalImage) ? 'grid cols-md-2' : '' ?>">
+				<?php if (!$imageOnly && !$videoOnly) : ?>
 					<div class="modal__main__body__content-wrap order-2 order-md-1 p-3 px-md-3 py-md-5">
 						<?php if ($modalHeading) : ?>
 							<h2 id="modal__main__body__content-wrap__heading"><?php echo esc_html($modalHeading); ?></h2>
@@ -55,7 +57,7 @@
 					<div class="modal__main__body__image cover-image-wrap-md order-1 order-md-2">
 						<?php echo wp_get_attachment_image($modalImage, 'full margin-0'); ?>
 					</div>
-				<?php else : ?>
+				<?php elseif ($imageOnly) : ?>
 					<?php if ($modalButton) : ?>
 						<a
 						href="<?php echo esc_url($modalButton['url']); ?>"
@@ -67,6 +69,12 @@
 						</a>
 					<?php else : ?>
 						<p><?php echo __('Please add a url to the Modal Button field.', 'bathe'); ?></p>
+					<?php endif; ?>
+				<?php else : ?>
+					<?php if ($modalVideo) : ?>
+						<div class="vid-wrap">
+							<?php echo $modalVideo; ?>
+						</div>
 					<?php endif; ?>
 				<?php endif; ?>
 			</div>

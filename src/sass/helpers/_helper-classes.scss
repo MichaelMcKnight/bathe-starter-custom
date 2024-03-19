@@ -33,6 +33,10 @@
 	z-index: 3;
 }
 
+.d-block {
+	display: block;
+}
+
 .overlay {
 	height: 100%;
 	left: 0;
@@ -62,6 +66,24 @@ body .is-layout-flex > .margin-inline-center,
 		rgb(255 255 255 / 100%) 0%,
 		rgb(15 86 119 / 5%) 100%
 	);
+}
+
+.vid-wrap {
+	position: relative;
+
+	&::after {
+		content: '';
+		display: block;
+		padding-bottom: 56.25%;
+	}
+
+	iframe {
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
 }
 
 .cover-image-wrap {
