@@ -29,8 +29,8 @@ You can find the Bathe documentation [on the website](https://ixkaito.github.io/
 
 In the package.json file under config->browsersync update the proxy to match your local site url.
 
-Run `npm install` to install the required packages.
-Run `npm run dev` for development.
+Run `npm install` to install the required packages.  
+Run `npm run dev` for development.  
 Run `npm run build` for deployment.
 
 Cheers, and Godspeed! 🍻
