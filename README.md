@@ -23,9 +23,12 @@ You can find the Bathe documentation [on the website](https://ixkaito.github.io/
 9. Prebuilt mobile menu, modal, and banner.
 
 > [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) should be installed for best results.
+
 > Tailwind is disabled by default. You can re-enable it by removing the comments in postcss.config.mjs and the enqueue in functions.php
 
 ### How to Use
+
+In style.css update the [headers](https://developer.wordpress.org/themes/basics/main-stylesheet-style-css/#example) as needed for your project.
 
 In the package.json file under config->browsersync update the proxy to match your local site url.
 
