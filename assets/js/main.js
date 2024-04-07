@@ -1,1 +1,154 @@
-const f=()=>{const e=document.getElementById("modal");if(e){let t;const l='a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';let s;const d=()=>{s.length&&s[0].focus()},r=i=>{if(i.keyCode===9){const c=s[0],m=s[s.length-1];i.shiftKey?document.activeElement===c&&(i.preventDefault(),m.focus()):document.activeElement===m&&(i.preventDefault(),c.focus())}i.keyCode===27&&a(o,e)},n=e.querySelector(".modal__bg"),o=e.querySelector(".modal__main"),u=e.querySelector(".modal__main__header__close-button");s=e.querySelectorAll(l),o&&setTimeout(()=>{o.classList.add("active"),e.setAttribute("aria-hidden","false"),t=document.activeElement,d(),e.addEventListener("keydown",r)},500);const a=(i,c)=>{i.classList.remove("active"),c.setAttribute("aria-hidden","true"),setTimeout(()=>{c.style.display="none",t&&t.focus()},300),c.removeEventListener("keydown",r)};n.addEventListener("click",()=>{a(o,e)}),u.addEventListener("click",()=>{a(o,e)})}},h=(e,t)=>{e.animate([{opacity:1,height:e.scrollHeight+"px",overflow:"hidden"},{opacity:0,height:"0px"}],{duration:t,fill:"forwards"}).onfinish=function(){e.style.display="none"}},y=(e,t)=>{e.style.display="block",e.style.height="0px",e.style.overflow="hidden",e.animate([{opacity:0,height:"0px"},{opacity:1,height:e.scrollHeight+"px"}],{duration:t,fill:"forwards"})},b=(e,t)=>{const l=window.getComputedStyle(e).height,s=window.getComputedStyle(e).opacity;l==="0px"||s==="0"?y(e,t):h(e,t)},g=()=>{const e=document.getElementById("mobile-menu"),t=document.getElementById("mobile-menu-trigger"),l=e.querySelector(".menu"),s=(n,o,u)=>{let a=n.getAttribute("aria-expanded")==="true"||!1;n.setAttribute("aria-expanded",!a),n.classList.toggle("is-active"),a===!1?(o.classList.add("show-menu"),setTimeout(()=>{o.classList.add("active"),u.classList.add("active")},100)):(o.classList.remove("active"),u.classList.remove("active"),setTimeout(()=>{o.classList.remove("show-menu")},350))};t.addEventListener("click",()=>{s(t,e,l)});const d=l.querySelectorAll(".menu-item-has-children"),r=e.querySelectorAll(".sub-menu");d.length>0&&d.forEach((n,o)=>{n.addEventListener("click",()=>{n.classList.toggle("active"),b(r[o],200)})})},p=()=>{const e=document.getElementById("homepage-banner"),t=document.getElementById("homepage-banner-close");t&&t.addEventListener("click",()=>{e.style.display="none"})};document.addEventListener("DOMContentLoaded",()=>{f(),g(),p()});
+const modalHandler = () => {
+  const modal = document.getElementById("modal");
+  if (modal) {
+    let focusedElementBeforeModal;
+    const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+    let focusableElements;
+    const setFocusToFirstElement = () => {
+      if (focusableElements.length) {
+        focusableElements[0].focus();
+      }
+    };
+    const trapTabKey = (e) => {
+      if (e.keyCode === 9) {
+        const firstFocusableElement = focusableElements[0];
+        const lastFocusableElement = focusableElements[focusableElements.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === firstFocusableElement) {
+            e.preventDefault();
+            lastFocusableElement.focus();
+          }
+        } else {
+          if (document.activeElement === lastFocusableElement) {
+            e.preventDefault();
+            firstFocusableElement.focus();
+          }
+        }
+      }
+      if (e.keyCode === 27) {
+        closeModal(modalContent, modal);
+      }
+    };
+    const modalBg = modal.querySelector(".modal__bg");
+    const modalContent = modal.querySelector(".modal__main");
+    const modalClose = modal.querySelector(
+      ".modal__main__header__close-button"
+    );
+    focusableElements = modal.querySelectorAll(focusableElementsString);
+    if (modalContent) {
+      setTimeout(() => {
+        modalContent.classList.add("active");
+        modal.setAttribute("aria-hidden", "false");
+        focusedElementBeforeModal = document.activeElement;
+        setFocusToFirstElement();
+        modal.addEventListener("keydown", trapTabKey);
+      }, 500);
+    }
+    const closeModal = (content, modal2) => {
+      content.classList.remove("active");
+      modal2.setAttribute("aria-hidden", "true");
+      setTimeout(() => {
+        modal2.style.display = "none";
+        if (focusedElementBeforeModal) {
+          focusedElementBeforeModal.focus();
+        }
+      }, 300);
+      modal2.removeEventListener("keydown", trapTabKey);
+    };
+    modalBg.addEventListener("click", () => {
+      closeModal(modalContent, modal);
+    });
+    modalClose.addEventListener("click", () => {
+      closeModal(modalContent, modal);
+    });
+  }
+};
+const slideUp = (element, duration) => {
+  element.animate(
+    [
+      { opacity: 1, height: element.scrollHeight + "px", overflow: "hidden" },
+      { opacity: 0, height: "0px" }
+    ],
+    {
+      duration,
+      fill: "forwards"
+    }
+  ).onfinish = function() {
+    element.style.display = "none";
+  };
+};
+const slideDown = (element, duration) => {
+  element.style.display = "block";
+  element.style.height = "0px";
+  element.style.overflow = "hidden";
+  element.animate(
+    [
+      { opacity: 0, height: "0px" },
+      { opacity: 1, height: element.scrollHeight + "px" }
+    ],
+    {
+      duration,
+      fill: "forwards"
+    }
+  );
+};
+const slideToggle = (element, duration) => {
+  const height = window.getComputedStyle(element).height;
+  const opacity = window.getComputedStyle(element).opacity;
+  if (height === "0px" || opacity === "0") {
+    slideDown(element, duration);
+  } else {
+    slideUp(element, duration);
+  }
+};
+const mobileMenuHandler = () => {
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileMenuTrigger = document.getElementById("mobile-menu-trigger");
+  const mobileMenuNav = mobileMenu.querySelector(".menu");
+  const toggleMenu = (trigger, menu, nav) => {
+    let expanded = trigger.getAttribute("aria-expanded") === "true" || false;
+    trigger.setAttribute("aria-expanded", !expanded);
+    trigger.classList.toggle("is-active");
+    if (expanded === false) {
+      menu.classList.add("show-menu");
+      setTimeout(() => {
+        menu.classList.add("active");
+        nav.classList.add("active");
+      }, 100);
+    } else {
+      menu.classList.remove("active");
+      nav.classList.remove("active");
+      setTimeout(() => {
+        menu.classList.remove("show-menu");
+      }, 350);
+    }
+  };
+  mobileMenuTrigger.addEventListener("click", () => {
+    toggleMenu(mobileMenuTrigger, mobileMenu, mobileMenuNav);
+  });
+  const hasSubMenu = mobileMenuNav.querySelectorAll(".menu-item-has-children");
+  const subMenu = mobileMenu.querySelectorAll(".sub-menu");
+  if (hasSubMenu.length > 0) {
+    hasSubMenu.forEach((el, index) => {
+      el.addEventListener("click", () => {
+        el.classList.toggle("active");
+        slideToggle(subMenu[index], 200);
+      });
+    });
+  }
+};
+const bannerHandler = () => {
+  const banner = document.getElementById("homepage-banner");
+  const bannerClose = document.getElementById("homepage-banner-close");
+  if (bannerClose) {
+    bannerClose.addEventListener("click", () => {
+      banner.style.display = "none";
+    });
+  }
+};
+document.addEventListener("DOMContentLoaded", () => {
+  modalHandler();
+  mobileMenuHandler();
+  bannerHandler();
+});
+//# sourceMappingURL=main.js.map
